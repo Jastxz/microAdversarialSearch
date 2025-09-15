@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: micro-adversarial-search
+  
+  # Configuración de base de datos H2 para producción
+  datasource:
+    url: jdbc:h2:file:./data/ratelimitdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 20000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  
+  h2:
+    console:
+      enabled: false  # Deshabilitado en producción por seguridad
+
+# Configuración de logging
+logging:
+  level:
+    root: WARN
+    es.jastxz.micro-adversarial-search: INFO
+    org.springframework: WARN
+    org.hibernate: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/microprimes.log
+    max-size: 100MB
+    max-history: 30
+
+# Configuración del servidor
+server:
+  port: 8080
+  compression:
+    enabled: true
+  http2:
+    enabled: true
+  servlet:
+    context-path: /
+  tomcat:
+    max-threads: 10
+    min-spare-threads: 1
+    connection-timeout: 20000
