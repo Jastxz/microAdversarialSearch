@@ -13,6 +13,5 @@ public class MundoRequest {
     private int profundidad;
     private int marca;
     private int turno;
-    private int seleccionado;
 
 }

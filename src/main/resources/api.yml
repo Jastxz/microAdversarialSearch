@@ -1,0 +1,210 @@
+openapi: 3.0.1
+info:
+  title: Uso del motor de búsqueda adversarial
+  description: Microservicio que contiene un motor de búsqueda adversarial para juegos de dos jugadores. Incluye una API para calcular las mejores jugadas en algunos juegos.
+  version: "1.0.0"
+
+servers:
+  - url: http://localhost:8080
+    description: Servidor local
+
+paths:
+  /v0/tresenraya:
+    post:
+      summary: Lanza la función de búsqueda para el tres en raya
+      operationId: calculaJugadaRaya
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MundoRequest'
+      responses:
+        '200':
+          description: Cálculos realizados con éxito.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableroResponse'
+        '400':
+          description: Petición inválida.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Demasiadas peticiones en poco tiempo.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: API de cálculo no disponible o petición que consume más recursos que los disponibles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v0/gatos:
+    post:
+      summary: Lanza la función de búsqueda para el juego del ratón y los gatos
+      operationId: calculaJugadaGatos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MundoRequest'
+      responses:
+        '200':
+          description: Cálculos realizados con éxito.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableroResponse'
+        '400':
+          description: Petición inválida.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Demasiadas peticiones en poco tiempo.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: API de cálculo no disponible o petición que consume más recursos que los disponibles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v0/damas:
+    post:
+      summary: Lanza la función de búsqueda para las damas
+      operationId: calculaJugadaDamas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MundoRequest'
+      responses:
+        '200':
+          description: Cálculos realizados con éxito.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableroResponse'
+        '400':
+          description: Petición inválida.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Demasiadas peticiones en poco tiempo.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: API de cálculo no disponible o petición que consume más recursos que los disponibles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  
+components:
+  schemas:
+    MundoRequest:
+      type: object
+      required:
+        - data
+        - posicionFila
+        - posicionColumna
+        - marca
+        - turno
+        - dificultad
+        - profundidad
+      properties:
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+          example: [[0,0,0],[0,1,0],[2,1,0]]
+        posicionFila:
+          type: number
+          example: 1
+        posicionColumna:
+          type: number
+          example: 2
+        marca:
+          type: number
+          example: 1
+        turno:
+          type: number
+          example: 2
+        dificultad:
+          type: number
+          example: 2
+        profundidad:
+          type: number
+          example: 1
+
+    TableroResponse:
+      type: object
+      required:
+        - data
+        - fila
+        - columna
+      properties:
+        data:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+          example: [[0,0,0],[0,1,0],[2,1,0]]
+        fila:
+          type: integer
+          example: 1
+        columna:
+          type: integer
+          example: 2
+    
+    ErrorResponse:
+      type: object
+      required:
+        - code
+        - status
+        - message
+      properties:
+        code:
+          type: number
+        status:
+          type: string
+        message:
+          type: string
+        timestamp:
+          type: number
