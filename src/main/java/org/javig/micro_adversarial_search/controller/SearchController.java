@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -31,17 +32,17 @@ public class SearchController {
     }
 
     @PostMapping("/tresenraya")
-    public ResponseEntity<?> calculaJugadaRaya(MundoRequest request) {
+    public ResponseEntity<?> calculaJugadaRaya(@RequestBody MundoRequest request) {
         return calculaJugada(request, Util.juego3enRaya);
     }
 
     @PostMapping("/gatos")
-    public ResponseEntity<?> calculaJugadaGatos(MundoRequest request) {
+    public ResponseEntity<?> calculaJugadaGatos(@RequestBody MundoRequest request) {
         return calculaJugada(request, Util.juegoGato);
     }
 
     @PostMapping("/damas")
-    public ResponseEntity<?> calculaJugadaDamas(MundoRequest request) {
+    public ResponseEntity<?> calculaJugadaDamas(@RequestBody MundoRequest request) {
         return calculaJugada(request, Util.juegoDamas);
     }
 
@@ -102,13 +103,13 @@ public class SearchController {
         boolean profundidadNoValida = true;
         if (raya) {
             marcaNoValida = request.getMarca() < 1 || request.getMarca() > 2;
-            profundidadNoValida = request.getProfundidad() != 1 || request.getProfundidad() != 9;
+            profundidadNoValida = request.getProfundidad() != 1 && request.getProfundidad() != 9;
         } else if (gato) {
             marcaNoValida = Arrays.stream(FuncionesGato.nombresGatos).noneMatch(m -> m == request.getMarca()) 
                 && FuncionesGato.nombreRaton != request.getMarca();
-            profundidadNoValida = request.getProfundidad() != 1 || request.getProfundidad() != 2
-                || request.getProfundidad() != 4 || request.getProfundidad() != 6
-                || request.getProfundidad() != 8;
+            profundidadNoValida = request.getProfundidad() != 1 && request.getProfundidad() != 2
+                && request.getProfundidad() != 4 && request.getProfundidad() != 6
+                && request.getProfundidad() != 8;
         } else if (damas) {
             marcaNoValida = request.getMarca() < 1 || request.getMarca() > 2;
             profundidadNoValida = request.getProfundidad() < 1 || request.getProfundidad() > 5;

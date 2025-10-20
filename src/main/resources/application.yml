@@ -13,3 +13,9 @@ spring:
     h2:
         console:
             enabled: true # Habilita la consola web de H2 (opcional, para inspeccionar datos)
+logging:
+  level:
+    org:
+        springframework:
+            web: DEBUG
+        hibernate: WARN
