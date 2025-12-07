@@ -13,9 +13,17 @@ spring:
     h2:
         console:
             enabled: true # Habilita la consola web de H2 (opcional, para inspeccionar datos)
+# Configuración de logging
 logging:
   level:
-    org:
-        springframework:
-            web: DEBUG
-        hibernate: WARN
+    root: WARN
+    org.javig.micro_adversarial_search: DEBUG
+    org.springframework: WARN
+    org.hibernate: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/microprimes.log
+    max-size: 100MB
+    max-history: 30

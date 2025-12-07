@@ -27,7 +27,7 @@ spring:
 logging:
   level:
     root: WARN
-    es.jastxz.micro-adversarial-search: INFO
+    org.jastxz.micro-adversarial-search: INFO
     org.springframework: WARN
     org.hibernate: WARN
   pattern:

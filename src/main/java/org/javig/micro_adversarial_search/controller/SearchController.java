@@ -20,11 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @RestController
 @RequestMapping("/v0")
 public class SearchController {
-    
+
     private final SearchService searchService;
 
     public SearchController(SearchService searchService) {
@@ -51,10 +50,9 @@ public class SearchController {
             // Comprueba si los datos son inválidos
             if (datosNoValidos(request, juego)) {
                 ErrorResponse error = new ErrorResponse(
-                    400, 
-                    "Bad Request", 
-                    "Petición mal formulada"
-                );
+                        400,
+                        "Bad Request",
+                        "Petición mal formulada");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
             }
 
@@ -63,17 +61,16 @@ public class SearchController {
             Tablero tablero = new Tablero(matrix);
             Posicion posicion = new Posicion(request.getPosicionFila(), request.getPosicionColumna());
             Movimiento movimiento = new Movimiento(tablero, posicion);
-            Mundo mundo = new Mundo(movimiento, Util.juego3enRaya, request.getDificultad(), request.getProfundidad(), 
-                request.getMarca(), request.getTurno(), true);
+            Mundo mundo = new Mundo(movimiento, Util.juego3enRaya, request.getDificultad(), request.getProfundidad(),
+                    request.getMarca(), request.getTurno(), true);
             TableroResponse response = searchService.calculaJugada(mundo);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             // Error 500 para cualquier otro problema no controlado
             ErrorResponse error = new ErrorResponse(
-                500, 
-                "Internal Server Error", 
-                "Error interno del servidor"
-            );
+                    500,
+                    "Internal Server Error",
+                    "Error interno del servidor");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
         }
     }
@@ -88,34 +85,34 @@ public class SearchController {
         boolean matrizNoValida = true;
         boolean posicionNoValida = true;
         if (raya) {
-            matrizNoValida = request.getData().length != 3 || request.getData()[0].length != 3 
-                || request.getData()[1].length != 3 || request.getData()[2].length != 3;
-            posicionNoValida = request.getPosicionFila() < 0 || request.getPosicionFila() > 2 
-            || request.getPosicionColumna() < 0 || request.getPosicionColumna() > 2;
+            matrizNoValida = request.getData().length != 3 || request.getData()[0].length != 3
+                    || request.getData()[1].length != 3 || request.getData()[2].length != 3;
+            posicionNoValida = request.getPosicionFila() < 0 || request.getPosicionFila() > 2
+                    || request.getPosicionColumna() < 0 || request.getPosicionColumna() > 2;
         } else if (gato || damas) {
-            matrizNoValida = request.getData().length != 8 || request.getData()[0].length != 8 
-                || request.getData()[1].length != 8 || request.getData()[2].length != 8;
-            posicionNoValida = request.getPosicionFila() < 0 || request.getPosicionFila() > 7 
-                || request.getPosicionColumna() < 0 || request.getPosicionColumna() > 7;
+            matrizNoValida = request.getData().length != 8 || request.getData()[0].length != 8
+                    || request.getData()[1].length != 8 || request.getData()[2].length != 8;
+            posicionNoValida = request.getPosicionFila() < 0 || request.getPosicionFila() > 7
+                    || request.getPosicionColumna() < 0 || request.getPosicionColumna() > 7;
         }
-        
+
         boolean marcaNoValida = true;
         boolean profundidadNoValida = true;
         if (raya) {
             marcaNoValida = request.getMarca() < 1 || request.getMarca() > 2;
             profundidadNoValida = request.getProfundidad() != 1 && request.getProfundidad() != 9;
         } else if (gato) {
-            marcaNoValida = Arrays.stream(FuncionesGato.nombresGatos).noneMatch(m -> m == request.getMarca()) 
-                && FuncionesGato.nombreRaton != request.getMarca();
+            marcaNoValida = Arrays.stream(FuncionesGato.nombresGatos).noneMatch(m -> m == request.getMarca())
+                    && FuncionesGato.nombreRaton != request.getMarca();
             profundidadNoValida = request.getProfundidad() != 1 && request.getProfundidad() != 2
-                && request.getProfundidad() != 4 && request.getProfundidad() != 6
-                && request.getProfundidad() != 8;
+                    && request.getProfundidad() != 4 && request.getProfundidad() != 6
+                    && request.getProfundidad() != 8;
         } else if (damas) {
             marcaNoValida = request.getMarca() < 1 || request.getMarca() > 2;
             profundidadNoValida = request.getProfundidad() < 1 || request.getProfundidad() > 5;
         }
-        
-        return matrizNoValida || posicionNoValida || marcaNoValida || turnoNoValido 
+
+        return matrizNoValida || posicionNoValida || marcaNoValida || turnoNoValido
                 || dificultadNoValida || profundidadNoValida;
     }
 

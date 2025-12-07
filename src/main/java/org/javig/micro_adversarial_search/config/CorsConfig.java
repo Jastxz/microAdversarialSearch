@@ -14,7 +14,7 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins(
                     "https://cv.javig.org/"
-                    //, "http://localhost:5173/"
+                    , "http://localhost:5173/"
                 )
                 .allowedMethods("POST")
                 .allowedHeaders("*")
