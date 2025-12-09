@@ -13,6 +13,7 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public TableroResponse calculaJugada(Mundo mundo) {
         Tablero tablero = Minimax.negamax(mundo);
+        System.out.println(tablero.getMatrix().getData());
         return new TableroResponse(tablero.getMatrix().getData());
     }
 

@@ -61,7 +61,7 @@ public class SearchController {
             Tablero tablero = new Tablero(matrix);
             Posicion posicion = new Posicion(request.getPosicionFila(), request.getPosicionColumna());
             Movimiento movimiento = new Movimiento(tablero, posicion);
-            Mundo mundo = new Mundo(movimiento, Util.juego3enRaya, request.getDificultad(), request.getProfundidad(),
+            Mundo mundo = new Mundo(movimiento, juego, request.getDificultad(), request.getProfundidad(),
                     request.getMarca(), request.getTurno(), true);
             TableroResponse response = searchService.calculaJugada(mundo);
             return ResponseEntity.ok(response);
