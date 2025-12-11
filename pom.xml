@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>org.javig</groupId>
 	<artifactId>micro-adversarial-search</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>micro-adversarial-search</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>org.javig</groupId>
 			<artifactId>engine-lib</artifactId>
-			<version>1.1-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
