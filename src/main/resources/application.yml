@@ -13,6 +13,11 @@ spring:
   h2:
     console:
       enabled: true # Habilita la consola web de H2 (opcional, para inspeccionar datos)
+
+  web:
+    cors:
+      enabled: false
+
 # Configuración de logging
 logging:
   level:

@@ -23,6 +23,10 @@ spring:
     console:
       enabled: false # Deshabilitado en producción por seguridad
 
+  web:
+    cors:
+      enabled: false
+
 # Configuración de logging
 logging:
   level:
