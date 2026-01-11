@@ -22,7 +22,7 @@ spring:
 logging:
   level:
     root: WARN
-    org.javig.micro_adversarial_search: DEBUG
+    es.jastxz.micro_adversarial_search: DEBUG
     org.springframework: WARN
     org.hibernate: WARN
   pattern:

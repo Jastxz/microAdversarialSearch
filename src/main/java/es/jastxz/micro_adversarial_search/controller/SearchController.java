@@ -1,22 +1,24 @@
-package org.javig.micro_adversarial_search.controller;
+package es.jastxz.micro_adversarial_search.controller;
 
 import java.util.Arrays;
 
-import org.javig.engine.FuncionesGato;
-import org.javig.micro_adversarial_search.model.ErrorResponse;
-import org.javig.micro_adversarial_search.model.MundoRequest;
-import org.javig.micro_adversarial_search.model.TableroResponse;
-import org.javig.micro_adversarial_search.service.SearchService;
-import org.javig.tipos.Movimiento;
-import org.javig.tipos.Mundo;
-import org.javig.tipos.Posicion;
-import org.javig.tipos.SmallMatrix;
-import org.javig.tipos.Tablero;
-import org.javig.util.Util;
+import es.jastxz.engine.FuncionesGato;
+import es.jastxz.tipos.Movimiento;
+import es.jastxz.tipos.Mundo;
+import es.jastxz.tipos.Posicion;
+import es.jastxz.tipos.SmallMatrix;
+import es.jastxz.tipos.Tablero;
+import es.jastxz.util.Util;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import es.jastxz.micro_adversarial_search.model.ErrorResponse;
+import es.jastxz.micro_adversarial_search.model.MundoRequest;
+import es.jastxz.micro_adversarial_search.model.TableroResponse;
+import es.jastxz.micro_adversarial_search.service.SearchService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

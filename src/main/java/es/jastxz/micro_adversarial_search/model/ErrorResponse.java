@@ -1,4 +1,4 @@
-package org.javig.micro_adversarial_search.model;
+package es.jastxz.micro_adversarial_search.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,12 +13,12 @@ public class ErrorResponse {
     private String status;
     private String message;
     private long timestamp = System.currentTimeMillis();
-    
+
     public ErrorResponse(int code, String status, String message) {
         this.code = code;
         this.status = status;
         this.message = message;
         this.timestamp = System.currentTimeMillis();
     }
-    
+
 }

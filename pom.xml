@@ -9,7 +9,7 @@
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.javig</groupId>
+	<groupId>es.jastxz</groupId>
 	<artifactId>micro-adversarial-search</artifactId>
 	<version>1.0.2</version>
 	<name>micro-adversarial-search</name>
@@ -58,7 +58,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.javig</groupId>
+			<groupId>es.jastxz</groupId>
 			<artifactId>engine-lib</artifactId>
 			<version>1.0</version>
 		</dependency>

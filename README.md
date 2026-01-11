@@ -19,7 +19,7 @@ Actualmente el servicio soporta los siguientes juegos:
 - **Maven**: Gestión de dependencias y construcción.
 - **H2 Database**: Base de datos en memoria (para persistencia de logs/requests si fuera necesario).
 - **Lombok**: Reducción de código boilerplate.
-- **Engine Lib**: Librería personalizada (`org.javig:engine-lib`) que contiene la lógica core de los algoritmos (Minimax/Negamax).
+- **Engine Lib**: Librería personalizada (`es.jastxz:engine-lib`) que contiene la lógica core de los algoritmos (Minimax/Negamax).
 
 ## 📋 Requisitos
 

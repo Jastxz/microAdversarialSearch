@@ -1,4 +1,4 @@
-package org.javig.micro_adversarial_search.model;
+package es.jastxz.micro_adversarial_search.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class MundoRequest {
-    
+
     private int[][] data;
     private int posicionFila, posicionColumna;
     private int dificultad;

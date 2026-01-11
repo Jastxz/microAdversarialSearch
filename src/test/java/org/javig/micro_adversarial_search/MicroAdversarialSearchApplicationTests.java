@@ -1,4 +1,4 @@
-package org.javig.micro_adversarial_search;
+package es.jastxz.micro_adversarial_search;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

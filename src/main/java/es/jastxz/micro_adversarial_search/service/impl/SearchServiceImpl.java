@@ -1,11 +1,12 @@
-package org.javig.micro_adversarial_search.service.impl;
+package es.jastxz.micro_adversarial_search.service.impl;
 
-import org.javig.engine.Minimax;
-import org.javig.micro_adversarial_search.model.TableroResponse;
-import org.javig.micro_adversarial_search.service.SearchService;
-import org.javig.tipos.Mundo;
-import org.javig.tipos.Tablero;
+import es.jastxz.engine.Minimax;
+import es.jastxz.tipos.Mundo;
+import es.jastxz.tipos.Tablero;
 import org.springframework.stereotype.Service;
+
+import es.jastxz.micro_adversarial_search.model.TableroResponse;
+import es.jastxz.micro_adversarial_search.service.SearchService;
 
 @Service
 public class SearchServiceImpl implements SearchService {
