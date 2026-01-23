@@ -7,7 +7,6 @@ spring:
     username: sa
     password: ""
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
   h2:
@@ -21,20 +20,30 @@ spring:
 # Configuración de logging
 logging:
   level:
-    root: WARN
-    es.jastxz.micro_adversarial_search: DEBUG
-    org.springframework: WARN
-    org.hibernate: WARN
+    root: INFO
+    es.jastxz.micro_adversarial_search: INFO
+    org.springframework: INFO
+    org.hibernate: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
   file:
     name: logs/microprimes.log
-    max-size: 100MB
+    max-size: 10MB
     max-history: 30
 
 server:
   port: 0
+  compression:
+    enabled: true
+  http2:
+    enabled: true
+  servlet:
+    context-path: /
+  tomcat:
+    max-threads: 10
+    min-spare-threads: 1
+    connection-timeout: 20000
 
 eureka:
   client:
@@ -48,4 +57,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,gateway
+        include: health,info,mappings
