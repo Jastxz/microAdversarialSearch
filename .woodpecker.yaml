@@ -34,7 +34,7 @@ steps:
       TOKEN:
         from_secret: GHCR_TOKEN
     commands:
-      - cd /srv/serviciosjavi/microadversarial-search
+      - cd /srv/serviciosjavi/microadversarialsearch
       - echo "$${TOKEN}" | docker login ghcr.io -u "$${USERNAME}" --password-stdin
       - docker compose pull
       - docker compose up -d
