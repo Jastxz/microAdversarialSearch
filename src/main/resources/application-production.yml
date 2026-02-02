@@ -44,7 +44,7 @@ logging:
 
 # Configuración del servidor
 server:
-  port: 0
+  port: 5555
   compression:
     enabled: true
   http2:
@@ -59,7 +59,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://eureka-server:5555/eureka/
     register-with-eureka: true
     fetch-registry: true
   instance:
