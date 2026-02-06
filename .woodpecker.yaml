@@ -9,12 +9,12 @@ steps:
       - yum install -y git
       - cd /tmp
       - git clone https://github.com/Jastxz/engine-lib.git
-      - cd engine-lib/engine-lib
+      - cd engine-lib
+      - ls -la
+      - cd engine-lib
       - mvn clean install -DskipTests
-
-  maven_build:
-    image: maven:3.9.11-amazoncorretto-24-al2023
-    commands:
+      - cd /woodpecker/src/github.com/${CI_REPO}
+      - ls -la
       - mvn -B -ntp clean package -DskipTests
 
   build_push_image:
