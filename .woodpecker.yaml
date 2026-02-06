@@ -9,12 +9,9 @@ steps:
       - apt-get update && apt-get install -y git
       - cd /tmp
       - git clone https://github.com/Jastxz/engine-lib.git
-      - cd engine-lib
-      - ls -la
-      - cd engine-lib
+      - cd engine-lib/engine-lib
       - mvn clean install -DskipTests
       - cd /woodpecker/src/github.com/${CI_REPO}
-      - ls -la
       - mvn -B -ntp clean package -DskipTests
 
   build_push_image:
