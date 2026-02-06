@@ -7,8 +7,9 @@ steps:
     image: maven:3.9.11-amazoncorretto-24-al2023
     commands:
       - yum install -y git
-      - git clone --branch v1.0 https://github.com/Jastxz/engine-lib.git /tmp/engine-lib
-      - cd /tmp/engine-lib
+      - cd /tmp
+      - git clone --branch v1.0 https://github.com/Jastxz/engine-lib.git /engine-lib
+      - cd /engine-lib
       - mvn clean install -DskipTests
 
   maven_build:
