@@ -3,6 +3,14 @@ when:
   event: [push, pull_request]
 
 steps:
+  install_engine_lib:
+    image: maven:3.9.11-amazoncorretto-24-al2023
+    commands:
+      - yum install -y git
+      - git clone --branch v1.0 https://github.com/Jastxz/engine-lib.git /tmp/engine-lib
+      - cd /tmp/engine-lib
+      - mvn clean install -DskipTests
+
   maven_build:
     image: maven:3.9.11-amazoncorretto-24-al2023
     commands:
