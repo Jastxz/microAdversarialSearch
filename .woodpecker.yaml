@@ -10,6 +10,7 @@ steps:
       - cd /tmp
       - git clone https://github.com/Jastxz/engine-lib.git /engine-lib
       - cd /engine-lib
+      - git checkout 1.0
       - mvn clean install -DskipTests
 
   maven_build:
