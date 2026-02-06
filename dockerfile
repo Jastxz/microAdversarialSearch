@@ -2,18 +2,6 @@
 FROM maven:3.9.11-amazoncorretto-24-al2023 AS builder
 WORKDIR /app
 
-# Instalar git para clonar la librería
-RUN yum install -y git
-
-# Clonar e instalar engine-lib v1.0 en el repositorio local de Maven
-WORKDIR /tmp
-RUN git clone --branch v1.0 https://github.com/Jastxz/engine-lib.git && \
-    cd engine-lib && \
-    mvn clean install -DskipTests
-
-# Volver al directorio de la aplicación
-WORKDIR /app
-
 # Copiar y descargar dependencias del proyecto
 COPY pom.xml .
 RUN mvn -B -ntp -q dependency:go-offline
