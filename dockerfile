@@ -1,5 +1,5 @@
 # ---- Builder ----
-FROM maven:3.9.11-amazoncorretto-24-al2023 AS builder
+FROM maven:3.9.11-eclipse-temurin-21 AS builder
 WORKDIR /app
 
 # Copiar y descargar dependencias del proyecto
