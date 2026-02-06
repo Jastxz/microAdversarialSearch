@@ -8,10 +8,12 @@ steps:
     environment:
       GITHUB_TOKEN:
         from_secret: GHCR_TOKEN
+      USERNAME:
+        from_secret: GHCR_USERNAME
     commands:
       - yum install -y git
       - cd /tmp
-      - git clone --branch v1.0 https://${GITHUB_TOKEN}@github.com/Jastxz/engine-lib.git /engine-lib
+      - git clone --branch v1.0 https://$${USERNAME}:$${GITHUB_TOKEN}@github.com/Jastxz/engine-lib.git /engine-lib
       - cd /engine-lib
       - mvn clean install -DskipTests
 
