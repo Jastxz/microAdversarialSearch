@@ -8,9 +8,8 @@ steps:
     commands:
       - yum install -y git
       - cd /tmp
-      - git clone https://github.com/Jastxz/engine-lib.git /engine-lib
-      - cd /engine-lib
-      - git checkout 1.0
+      - git clone https://github.com/Jastxz/engine-lib.git
+      - cd engine-lib/engine-lib
       - mvn clean install -DskipTests
 
   maven_build:
