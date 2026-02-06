@@ -5,16 +5,13 @@ when:
 steps:
   install_engine_lib:
     image: maven:3.9.11-amazoncorretto-24-al2023
-    environment:
-      GITHUB_TOKEN:
-        from_secret: GHCR_TOKEN
-      USERNAME:
-        from_secret: GHCR_USERNAME
     commands:
       - yum install -y git
       - cd /tmp
       - git clone https://github.com/Jastxz/engine-lib.git /engine-lib
       - cd /engine-lib
+      - git checkout v1.0
+      - ls -la
       - mvn clean install -DskipTests
 
   maven_build:
